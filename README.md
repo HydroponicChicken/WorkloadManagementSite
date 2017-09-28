@@ -1,5 +1,6 @@
 # WorkloadManagementSite
 
 # Team Hydroponic Chicken
-# Members:
-# Paige Ludecker
+Members:
+Paige Ludecker
+Bridget Opazo
