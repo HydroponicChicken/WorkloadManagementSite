@@ -2,5 +2,5 @@
 
 # Team Hydroponic Chicken
 Members:
-Paige Ludecker
-Bridget Opazo
+Paige Ludecker \n
+Bridget Opazo \n
