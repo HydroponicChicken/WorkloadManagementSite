@@ -1,3 +1,20 @@
+<?php
+
+	error_reporting(E_ALL);
+	
+	require_once("proj4connectpath.php");
+	
+	session_start();
+
+	$taskQuery = "SELECT * FROM tasks WHERE email='" . $email . "'";
+	//var_dump($taskQuery);
+	$tQuery = mysqli_query($connect, $taskQuery);
+	while($row = $tQuery->fetch_array()) {
+		$rows[] = $row;
+	}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,19 +27,19 @@
 <body>
   <nav class="navbar navbar-expand-md bg-secondary navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="main.html">
+      <a class="navbar-brand" href="index.html">
         <img src="logo.PNG" width="30" height="30" class="d-inline-block align-top p-0" alt=""> </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="main.html">Overview</a>
+            <a class="nav-link" href="index.html">Overview</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="manage.html">Manage Tasks</a>
           </li>
         </ul>
-        <a class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-sign-out"></i> Log Out</a>
+        <a class="btn navbar-btn ml-2 text-white btn-secondary" href="index.php"><i class="fa d-inline fa-lg fa-sign-out"></i> Log Out</a>
       </div>
     </div>
   </nav>
@@ -31,6 +48,30 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="display-1 text-center">Overview</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center display-4">Create Tasks</h1>
+          <br>
+		  	<?php var_dump($rows[]);
+			var_dump($email);
+			?>
+          <form action="main.html" class="text-center"> <b>Task Title: </b>
+            <input type="text" name="taskTitle" class="">
+            <br>
+            <br> <b>Due Date: </b>
+            <input type="date" class="" name="dueDate" id="date">
+            <br>
+            <br> <b>Hours: </b>
+            <input name="hours" type="number" max="24" min="1">
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="text-center"> </form>
         </div>
       </div>
     </div>
