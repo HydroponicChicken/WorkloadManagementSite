@@ -1,3 +1,20 @@
+<?php
+//NOTE: THERE MAY BE A BETTER WAY TO HANDLE 
+//      DESTROYING THE SESSIONS
+
+error_reporting(E_ALL);
+
+//destroy any existing sessions
+echo "destroying session";
+session_unset();
+session_destroy();
+setcookie(session_name(),'',1,'/');
+echo "session destroyed";
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
