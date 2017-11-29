@@ -1,6 +1,5 @@
 <?php
 
-
 error_reporting(E_ALL);
 require_once('proj4connectpath.php');
 require_once('utils.php');
