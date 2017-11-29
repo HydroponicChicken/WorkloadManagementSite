@@ -1,17 +1,16 @@
-<?php 	
+<?php
 
 //NOTE: THIS CODE NEEDS THE FOLLOWING (AT LEAST)
 //   - prepared statements for queries
 //   - javascript should be removed to separate file
-//   - move php to separate file?
+//    - move php to separate file?
 
 
 error_reporting(E_ALL);
 require_once('proj4connectpath.php');
+require_once('utils.php');
 
 session_start();
-
-//var_dump($_SESSION);
 
 if(session_id()) {
     echo "session id!";
@@ -22,18 +21,17 @@ else {
 
 //NEED TO check last authentication to see if login needs redone
 
-$email = $_SESSION['email'];
-//var_dump($email);
 
-//NEED TO make prepared statement!!!
-$tasksQuery = "SELECT title, start, due, hours FROM tasks WHERE email='" . $email . "'";
-//var_dump($tasksQuery);
 
 //make database connection
 $connect = $path;
-echo "Connection ", ($connect ? "" : "NOT "), "established.<br />\n";
+//echo "Connection ", ($connect ? "" : "NOT "), "established.<br />\n";
 
-$tQuery = mysqli_query($connect, $tasksQuery);
+//prepare and execute select statement
+$tasksQueryStmt = $connect->prepare("SELECT title, start, due, hours FROM tasks WHERE email=?");
+$email = safeLookup($_SESSION,"email","");
+$tasksQueryStmt = $bind_param("s",$email);
+$tasksQueryStmt->execute();
 
 $taskArray = array();
 
