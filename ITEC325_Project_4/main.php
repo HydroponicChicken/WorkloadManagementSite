@@ -1,10 +1,5 @@
 <?php
 
-//NOTE: THIS CODE NEEDS THE FOLLOWING (AT LEAST)
-//   - prepared statements for queries
-//   - javascript should be removed to separate file
-//    - move php to separate file?
-
 
 error_reporting(E_ALL);
 require_once('proj4connectpath.php');
