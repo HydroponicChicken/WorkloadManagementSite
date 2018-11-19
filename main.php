@@ -8,7 +8,7 @@
 		//NEED TO check last authentication to see if login needs redone
 		
 		//prepared statements were very awkward using 'bind_result' because I could not 
-		//find a way to fetch the columns as a row due to php version (5.2)
+		//find a way to ftch the columns as a row due to php version (5.2)
 		//get_result() to be used with fetch_assoc() was not introduced until php 5.3
 		$email = safeLookup($_SESSION,"email","");
 		$tasksQuery = "SELECT title, start, due, hours FROM tasks WHERE email='" . $email . "'";
