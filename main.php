@@ -1,31 +1,17 @@
 <?php 	
-//NOTE: THIS CODE NEEDS THE FOLLOWING (AT LEAST)
-//   - prepared statements for queries
-//   - javascript should be removed to separate file
-//   - move php to separate file?
 
-        error_reporting(E_ALL); 
+		error_reporting(E_ALL); 
 		require_once('proj4connectpath.php');
-		
+		require_once('utils.php');
 		session_start();
-		
-		//var_dump($_SESSION);
-		
-		if(session_id()) {
-			echo "session id!";
-		}
-		else {
-			echo "no session id";
-		}
 		
 		//NEED TO check last authentication to see if login needs redone
 		
-		$email = $_SESSION['email'];
-		//var_dump($email);
-		
-		//NEED TO make prepared statement!!!
+		//prepared statements were very awkward using 'bind_result' because I could not 
+		//find a way to fetch the columns as a row due to php version (5.2)
+		//get_result() to be used with fetch_assoc() was not introduced until php 5.3
+		$email = safeLookup($_SESSION,"email","");
 		$tasksQuery = "SELECT title, start, due, hours FROM tasks WHERE email='" . $email . "'";
-		//var_dump($tasksQuery);
 			
 		//make database connection
 		$connect = $path;
