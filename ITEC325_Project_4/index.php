@@ -1,6 +1,6 @@
 <?php
 //NOTE: THERE MAY BE A BETTER WAY TO HANDLE 
-//      DESTROYING THE SESSIONS.
+//      DESTROYING THE SESSIONS
 
 error_reporting(E_ALL);
 
